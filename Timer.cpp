@@ -60,7 +60,7 @@ void InitTimer(void)
 	}
 
 	g_nTimer = 0;	
-	g_nTimerCount = 100;
+	g_nTimerCount = 10;
 
 	//頂点バッファの生成
 	pDevice->CreateVertexBuffer(sizeof(VERTEX_2D) * 4 * MAX_TIMER,

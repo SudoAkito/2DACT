@@ -327,7 +327,7 @@ void HitEnemy(int nCntEn, int nDmg)
 	//頂点バッファをロックして頂点情報へのポインタを取得
 	g_pVtxBuffEnemy->Lock(0, 0, (void**)&pVtx, 0);
 
-	if (g_aEnemy[nCntEn].nLife<=0||g_aEnemy[nCntEn].nType == 0)
+	if (g_aEnemy[nCntEn].nLife<=0&&g_aEnemy[nCntEn].nType == 0)
 	{
 		SetExplosion(g_aEnemy[nCntEn].pos, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), g_aEnemy[nCntEn].rot, g_aEnemy[nCntEn].fLength);
 		g_aEnemy[nCntEn].bUse = false;
@@ -335,7 +335,7 @@ void HitEnemy(int nCntEn, int nDmg)
   		AddScore(250);
    		g_nNumEnemy--;                //敵の総数カウントダウン
 	}
-	else if (g_aEnemy[nCntEn].nLife <= 0 || g_aEnemy[nCntEn].nType == 1)
+	else if (g_aEnemy[nCntEn].nLife <= 0 && g_aEnemy[nCntEn].nType == 1)
 	{
 		SetExplosion(g_aEnemy[nCntEn].pos, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), g_aEnemy[nCntEn].rot, g_aEnemy[nCntEn].fLength);
 		g_aEnemy[nCntEn].bUse = false;
@@ -343,7 +343,7 @@ void HitEnemy(int nCntEn, int nDmg)
 		AddScore(500);
 		g_nNumEnemy--;                //敵の総数カウントダウン
 	}
-	else if (g_aEnemy[nCntEn].nLife <= 0 || g_aEnemy[nCntEn].nType == 2)
+	else if (g_aEnemy[nCntEn].nLife <= 0 && g_aEnemy[nCntEn].nType == 2)
 	{
 		SetExplosion(g_aEnemy[nCntEn].pos, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), g_aEnemy[nCntEn].rot, g_aEnemy[nCntEn].fLength);
 		g_aEnemy[nCntEn].bUse = false;

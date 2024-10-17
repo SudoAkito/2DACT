@@ -9,6 +9,7 @@
 #include "input.h"
 #include "block.h"
 #include"bullet.h"
+#include "Life.h"
 
 //グローバル変数
 LPDIRECT3DTEXTURE9 g_pTexturePlayer = NULL;
@@ -36,7 +37,7 @@ void InitPlayer(void)
 	g_player.pos = D3DXVECTOR3(200.0f, 640.0f, 0.0f);  //位置初期化
 	g_player.move = D3DXVECTOR3(0.0f,0.0f,0.0f);	      //移動量初期化
 	g_player.rot = D3DXVECTOR3(0.0f,0.0f,0.0f);        //向きの初期化
-	g_player.nLife = 10;
+	g_player.nLife = 3;
 	g_player.bDisp = true;
 	g_player.bJump = false;
 
@@ -124,6 +125,8 @@ void UninitPlayer(void)
 //------------------------------------------
 void UpdatePlayer(void)
 {
+	SetLife(g_player.nLife);
+
 	GetKeyPlayer();
 }
 
@@ -232,7 +235,7 @@ void GetKeyPlayer(void)
 
 	if (KeyboardTrigger(DIK_Q) == true)
 	{
-		SetBullet(g_player.pos, D3DXVECTOR3(sinf(g_player.rot.z + D3DX_PI) * MAX_SPEED, cosf(g_player.rot.z + D3DX_PI) * MAX_SPEED, 0.0f), g_player.rot, g_player.fLength, 150, BULLETTYPE_PLAYER);;
+		SetBullet(D3DXVECTOR3(g_player.pos.x,g_player.pos.y-MAX_Y/2,0.0f), D3DXVECTOR3(sinf(g_player.rot.z + D3DX_PI) * MAX_SPEED, cosf(g_player.rot.z + D3DX_PI) * MAX_SPEED, 0.0f), g_player.rot, g_player.fLength, 150, BULLETTYPE_PLAYER);;
 	}
 
 	//前回の位置を保存

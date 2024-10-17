@@ -276,10 +276,10 @@ void EnterpVtx(void)
 	g_pVtxBuffTITLE2->Lock(0, 0, (void**)&pVtx, 0);
 
 	//í∏ì_ç¿ïWÇÃê›íË
-	pVtx[0].pos = D3DXVECTOR3(185.0f, 480.0f, 0.0f);
-	pVtx[1].pos = D3DXVECTOR3(1095.0f, 480.0f, 0.0f);
-	pVtx[2].pos = D3DXVECTOR3(185.0f, 600.0f, 0.0f);
-	pVtx[3].pos = D3DXVECTOR3(1095.0f, 600.0f, 0.0f);
+	pVtx[0].pos = D3DXVECTOR3(222.0f, 520.0f, 0.0f);
+	pVtx[1].pos = D3DXVECTOR3(1058.0f, 520.0f, 0.0f);
+	pVtx[2].pos = D3DXVECTOR3(222.0f, 643.0f, 0.0f);
+	pVtx[3].pos = D3DXVECTOR3(1058.0f, 643.0f, 0.0f);
 
 	//rhwÇÃê›íË
 	pVtx[0].rhw = 1.0f;

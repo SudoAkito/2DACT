@@ -20,6 +20,7 @@
 #include "partycle.h"
 #include "enemyset.h"
 #include"Timer.h"
+#include"Life.h"
 
 //グローバル変数
 GAMESTATE g_gameState = GAMESTATE_NONE;   //ゲームの状態
@@ -33,10 +34,16 @@ int g_nCounter2;
 //------------------------------------------
 void InitGame(void)
 {
+	//背景
 	InitBackground();
 
+	//体力
+	InitPlayerHeart();
+
+	//プレイヤー
 	InitPlayer();
 
+	//ブロック
 	InitBlock();
 
 	SetBlock(D3DXVECTOR3(BLOCK_HEIGHT / 2, 680.0f, 0.0f), 1350.0f, 60.0f);
@@ -94,6 +101,9 @@ void UninitGame(void)
 	//背景
 	UninitBackground();
 
+	//体力
+	UninitPlayerHeart();
+
 	//ポーズ
 	UninitPause();
 
@@ -143,6 +153,9 @@ void UpdateGame(void)
 		//背景
 		UpdateBackground();
 
+		//体力
+		UpdatePlayerHeart();
+
 		//タイマー
 		UpdateTimer();
 
@@ -171,10 +184,9 @@ void UpdateGame(void)
 		UpdateEnemy();
 	}
 
-	
 	Player* pPlayer = GetPlayer();  //プレイヤーのポインタ
 
-	if (pPlayer->bDisp==false||nEnemy<=0)   //いずれタイムオーバーの条件追加
+	if (pPlayer->bDisp==false||nEnemy<=0||nTimer<=0)   //いずれタイムオーバーの条件追加
 	{
 		//モード設定
 		g_gameState=GAMESTATE_END;
@@ -208,6 +220,9 @@ void DrawGame(void)
 {
 	//背景
 	DrawBackground();
+
+	//体力
+	DrawPlayerHeart();
 
 	//ブロック
 	DrawBlock();

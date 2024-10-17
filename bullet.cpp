@@ -194,17 +194,25 @@ void UpdateBullet(void)
 
 				for (nCntEn = 0; nCntEn < MAX_ENEMY; nCntEn++, pEnemy++)
 				{
+
 					if (pEnemy->bUse == true)
 					{
-						//敵が使用されている
-						if (g_aBullet[nCntbullet].pos.x <= pEnemy->pos.x + MAX_WIDTH * 0.5f
-							&& g_aBullet[nCntbullet].pos.x >= pEnemy->pos.x - MAX_WIDTH * 0.5f
-							&& g_aBullet[nCntbullet].pos.y <= pEnemy->pos.y + MAX_HEIGHT * 0.5f
-							&& g_aBullet[nCntbullet].pos.y >= pEnemy->pos.y - MAX_HEIGHT * 0.5f)
+						if (JUDGMENT_HEAD)
 						{
-							//敵のヒット処理
-							HitEnemy(nCntEn, 1);
-							g_aBullet[nCntbullet].bUse = false;      //使用してない状態
+							
+						}
+						else if (JUDGMENT_BODY)
+						{
+							//敵が使用されている
+							if (g_aBullet[nCntbullet].pos.x <= pEnemy->pos.x + MAX_WIDTH * 0.5f
+								&& g_aBullet[nCntbullet].pos.x >= pEnemy->pos.x - MAX_WIDTH * 0.5f
+								&& g_aBullet[nCntbullet].pos.y <= pEnemy->pos.y + MAX_HEIGHT * 0.5f
+								&& g_aBullet[nCntbullet].pos.y >= pEnemy->pos.y - MAX_HEIGHT * 0.5f)
+							{
+								//敵のヒット処理
+								HitEnemy(nCntEn, 1);
+								g_aBullet[nCntbullet].bUse = false;      //使用してない状態
+							}
 						}
 					}
 				}
